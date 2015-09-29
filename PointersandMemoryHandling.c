@@ -67,5 +67,23 @@ int main( int argc, char **argv)
                        
     printf("%p\n", (f+3)->name); // WTF? why the pointer changed the memory address?
                                  // and why that still maintain its address. 
+ 
+ 
+    // When I try to access this address memory, I got a sigsegv
+    const char *str = (char*)0x400800;
+    
+    printf("\n%a\n\n", str);
+    printf("\n%s\n\n", str);
+    
+    const char *lol = str;
+    
+    printf( "%d\n",(char*)lol);
+
+    while(1)
+    {
+        int j;
+        for(j=0; j<100000*2; j++);
+        printf( "%s\n", str++);        
+    }
     
 }
