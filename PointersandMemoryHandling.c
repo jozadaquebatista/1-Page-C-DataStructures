@@ -4,13 +4,13 @@
 #define MAX 10
 
 
-typedef struct
+typedef struct T
 {
 
     const char *name;
     int age;
 
-    struct friend *next;
+    struct T *next;
 
 } friend;
 
@@ -32,14 +32,50 @@ int main( int argc, char **argv)
     (f)->name = "Jozadaque";
     (f)->age = 21;
     //f++;
-    (f+1)->name = "Flavio";
+
+    (f+1)->name = "Flavio"; 
     (f+1)->age = 28;
+
+
     (f+2)->name = "Silvio";
     (f+2)->age = 19;
+
     (f+3)->name = "Estevao";
     (f+3)->age = 33;
+
     (f+4)->name = "Lucas";
     (f+4)->age = 52;
+    
+    
+    // Making a linked list without any problem
+    (f)->next = (friend*)(f+1);
+    (f+1)->next = (friend*)(f+2);
+    (f+2)->next = (friend*)(f+3);
+    (f+3)->next = (friend*)(f+4);
+    
+    int count=0;
+    while(f->next != NULL)
+    {
+        printf("%d\n", count);
+        count++;
+        f->next = (f+count)->next;
+        
+        if(f->next == NULL)
+            break;
+    }
+    
+    
+    // This part remake link between lists
+    int loop=0;
+    for(; loop < 5; loop++)
+    {
+        (f+loop)->next = (f+(loop+1));
+        // (f+loop)->next = (f+(loop+1))->next; <-That form works too, but I don't now how?(?-?)
+    }
+    // ------------------------------------
+    
+    printf("\n\n%s\n", ((f)->next->name));
+    printf("%d\n\n", ((f)->next->age));
     
     {
         int i;
@@ -67,18 +103,14 @@ int main( int argc, char **argv)
                        
     printf("%p\n", (f+3)->name); // WTF? why the pointer changed the memory address?
                                  // and why that still maintain its address. 
- 
- 
-    // When I try to access this address memory from another process, I got a sigsegv
-    // But here I got it.
-    const char *str = (char*)0x400880; // <- address memo of (f+3) here. this is ... super AWESOME :D :D :D
+    const char *str = (char*)0x400880;
     
     printf("\n%a\n\n", str);
     printf("\n%s\n\n", str);
     
     const char *lol = str;
     
-    printf( "%d\n",(char*)lol);
+    printf( "%s\n",(char*)lol);
 
     /*while(1)
     {
@@ -86,5 +118,4 @@ int main( int argc, char **argv)
         for(j=0; j<100000*2; j++);
         printf( "%s\n", str++);        
     }*/
-    
 }
