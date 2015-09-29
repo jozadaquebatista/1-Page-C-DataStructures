@@ -104,7 +104,8 @@ int main( int argc, char **argv)
     printf("%p\n", (f+3)->name); // WTF? why the pointer changed the memory address?
                                  // and why that still maintain its address. 
                                  
-    const char *str = (char*)0x400880; // Memo addres of pointer f+3(but it can change), that I can't access from another process(Like another C program)
+    const char *str = (char*)0x400880; // Memo addres of pointer f+3(but it can change), 
+                                       // that I can't access from another process(Like another C program)
     
     printf("\n%a\n\n", str);
     printf("\n%s\n\n", str);
