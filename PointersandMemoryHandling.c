@@ -69,8 +69,9 @@ int main( int argc, char **argv)
                                  // and why that still maintain its address. 
  
  
-    // When I try to access this address memory, I got a sigsegv
-    const char *str = (char*)0x400800;
+    // When I try to access this address memory from another process, I got a sigsegv
+    // But here I got it.
+    const char *str = (char*)0x400880; // <- address memo of (f+3) here. this is ... super AWESOME :D :D :D
     
     printf("\n%a\n\n", str);
     printf("\n%s\n\n", str);
@@ -79,11 +80,11 @@ int main( int argc, char **argv)
     
     printf( "%d\n",(char*)lol);
 
-    while(1)
+    /*while(1)
     {
         int j;
         for(j=0; j<100000*2; j++);
         printf( "%s\n", str++);        
-    }
+    }*/
     
 }
