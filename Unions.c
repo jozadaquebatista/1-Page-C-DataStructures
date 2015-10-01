@@ -29,5 +29,14 @@ int main(int argc, char **argv)
     printf("meu nome: %s\n", me->name);
     printf("last Name: %s\n", me->lastName);
     printf("minha idade: %d\n", me->age);
-
+    
+    // The above code will show us only the values of name and lastName
+    
+    // me->name = (const char*)"Jozadaque";
+    // me->age = 21;
+    
+    // printf("meu nome: %s\n", me->name);
+    // printf("minha idade: %d\n", me->age);
+    
+    // if I declare with this way, it will show us values name and age correctly
 }
