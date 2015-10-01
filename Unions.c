@@ -6,7 +6,7 @@ typedef struct
 
     const char *name;
     
-    union
+    union // Here I created an anonymous union, because the type that doesn't matter.
     {
         int age;
         float weight;
