@@ -1,13 +1,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 
 typedef struct node {
   char *el;
   struct node *n_node;
 }NODE;
 
-_Bool push(char *v,NODE *n) {
+_Bool push(const char*,NODE*);
+_Bool pop(NODE*);
+NODE *new_node(const char*);
+
+_Bool push(const char *v,NODE *n) {
   if(n) {
     push(v,n->n_node);
   } else {
@@ -25,12 +30,12 @@ _Bool pop(NODE *n) {
   }
 }
  
-NODE *new_node(char *v) {
+NODE *new_node(const char *v) {
   NODE *tmp = calloc(1,sizeof(NODE));
-        tmp->el = v;
+        strncpy(tmp->el,v,strlen(v));
         tmp->n_node = NULL;
         
-  return tmp;
+  return (NODE*)tmp;
 }
 
 int main(int argc, char **argv){
