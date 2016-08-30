@@ -188,6 +188,8 @@ int main(int argc, char **argv) {
   lst->list();
   lst->del(77);
   lst->list();
-  printf((lst->search(21)<0?"search not found:. %d\n","search found:. %d\n"), lst->search(21));
+  printf((lst->search(21)<0?"search not found:. %d\n",\
+                            "search found:. %d\n"),\
+                            lst->search(21));
 }
 ```
