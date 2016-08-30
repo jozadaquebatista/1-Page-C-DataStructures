@@ -121,7 +121,8 @@ _Bool add(NODE*,int);             //; if sucess returns true.
 int del(NODE*,int);               //; returns element deleted.
 _Bool list(NODE*);                //; if empty returns false.
 int search(NODE*,int);            //; if element in list returns this, otherwise returns -1.
-_Bool is_empty(NODE*);            //; verify if current node is vaid for use, if yes, returns 1, else 0 #!UNUSED
+_Bool is_empty(NODE*);            //; verify if current node is vaid for use,
+                                  //  if yes, returns 1, else 0 #!UNUSED
 
 _Bool add(NODE *l, int el) {
   if(l->n_node) {
