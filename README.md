@@ -11,7 +11,6 @@ Early I'll publish some code on the following subject:
 - Stack<br />
 - Linked Lists<br />
 - Queues<br />
-- Deques<br />
 - Hash Tables<br />
 - Trees<br />
 - Graphs<br />
@@ -141,11 +140,9 @@ int del(NODE *l,int el) {
     NODE *temp=NULL;
     
     temp=l;
-    free(l);
-    
     l=temp->n_node;
-    free(temp);
     
+    free(temp);
     return el;
   } else {
     del(l);
