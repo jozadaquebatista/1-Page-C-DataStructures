@@ -99,7 +99,7 @@ int main(int argc, char **argv){
 #include <stdbool.h>
 
 #define FAILURE -1
-#define printi(i)(printf("%d",i))
+#define printi(i)(printf("%d\n",i))
 
 /*   l is the list
  *   n_node represents the next node on the list
