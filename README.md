@@ -17,7 +17,7 @@ Early I'll publish some code on the following subject:
 - Graphs<br />
 
 ###NOTE: I'm testing one page tutorial and other git features ;D
-##Simple NODE
+####@Simple NODE
 ```c
 /*
 * What do you think is a Node in DS ?
@@ -38,7 +38,7 @@ struct node {
 
 /* That is a very pure simple basic datastructer in C, just simple. That's it. */
 ```
-#basic simplest stack
+####@Basic simplest stack
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -90,5 +90,103 @@ int main(int argc, char **argv){
   pop(Stack);
   
   return 0;
+}
+```
+
+####@Basic List
+```c
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+
+#define FAILURE -1
+#define printi(i)(printf("%d",i))
+
+/*   l is the list
+ *   n_node represents the next node on the list
+ */
+
+typedef struct node {
+  int value;
+  struct node *n_node;
+}NODE;
+
+/*
+ *    I'm not covering some issues in add function, like add in any position,
+ *    but take it as a challenge and solve it by yourself.
+ *    :)
+ */
+
+_Bool add(NODE*,int);             //; if sucess returns true.
+int del(NODE*,int);               //; returns element deleted.
+_Bool list(NODE*);                //; if empty returns false.
+int search(NODE*,int);            //; if element in list returns this, otherwise returns -1.
+_Bool is_empty(NODE*);            //; verify if current node is vaid for use, if yes, returns 1, else 0 #!UNUSED
+
+_Bool add(NODE *l, int el) {
+  if(l->n_node) {
+    add(l, el);
+  } else {
+    l = (NODE*)calloc(1,sizeof(NODE));
+    l->value=el;
+    l->n_node=NULL;
+    return true;
+  }
+  return false;
+}
+
+int del(NODE *l,int el) {
+  if(l->value==el) {
+    NODE *temp=NULL;
+    
+    temp=l;
+    free(l);
+    
+    l=temp->n_node;
+    free(temp);
+    
+    return el;
+  } else {
+    del(l);
+  }
+  return FAILURE;
+}
+
+_Bool list(NODE *l) {
+  if(l) {
+    printi(l->value);
+    list(i);
+  } else {
+    return true;
+  }
+  return false;
+}
+
+int search(NODE *l, int el) {
+  if(l) {
+    if(l->value == el)
+      return el;
+    else
+      search(l,i);
+  } else {
+    return FAILURE;
+  }
+}
+
+int main(int argc, char **argv) {
+  NODE *lst = calloc(1,sizeof(NODE));
+  
+  /* ADDING SOME ELEMENTS */
+  lst->add(10);
+  lst->add(21);
+  lst->add(7);
+  lst->add(77);
+  lst->add(80);
+  
+  /* SEARCHING, LISTING AND DEL */
+  lst->list();
+  lst->del(77);
+  lst->list();
+  printf((lst->search(21)<0?"search not found:. %d\n","search found:. %d\n"), lst->search(21));
 }
 ```
