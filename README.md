@@ -1,6 +1,6 @@
-# Data Structures with C/C++
+# C Data Structures
 
-A bunch of code covering data structures in cplusplus
+A bunch of code covering data structures in c programming language.
 <img src="http://www.cs.umd.edu/~mount/420/network.gif" align="center" >
 
 Early I'll publish some code on the following subject:
@@ -92,7 +92,7 @@ int main(int argc, char **argv){
 }
 ```
 
-####@Basic List
+####@Basic LinkedList
 ```c
 #include <stdio.h>
 #include <stdlib.h>
@@ -189,4 +189,83 @@ int main(int argc, char **argv) {
                             "search found:. %d\n"),\
                             lst->search(21));
 }
+```
+
+####@A basic Queue
+```c
+  #include <stdio.h>
+  #include <stdlib.h>
+  #include <stdbool.h>
+  #include <time.h>
+  
+  typedef struct node {
+    int value;
+    struct node *n_node;
+  } NODE;
+  
+  void add(int value, NODE *q);
+  void remove(NODE *q);
+
+
+  _Bool add(int value, NODE *q) {
+    if(!q) return false;
+  
+    NODE *fst_el = q;
+         
+    while(*q++) {
+      if(!q->n_node){
+        q->n_node = calloc(1,sizeof(NODE));
+        q->n_node->value = value;
+        q->n_node->n_node= NULL;
+        break;
+      }
+    }
+    q = (NODE*)fst_el;
+    return true;
+  }
+  
+  int remove(NODE *q) {
+    if(!q) return false;
+    
+    NODE *fst_el = q;
+    int value;
+    
+    q=(NODE*)q->n_node;
+    free(fst_el);
+    
+    return value;
+  }
+  
+  NODE *new(int value) {
+    NODE *new_node = calloc(1, sizeof(NODE));
+          new_node->value = value;
+          new_node->next  = NULL;
+          
+    return (NODE*)new_node;
+  }
+  
+  _Bool s_free(NODE *q) { /* My implemenntation of a super recursive free. :D */
+    if(q->next) {
+      s_free(q->next);
+    } else {
+      free(q);
+      return true;
+    }
+  }
+  
+  int main(int argc, char **argv) {
+    NODE *queue = new(22);
+    
+    srand(time(NULL));
+    for(int i=0; i<10; i++)
+      add(rand()%i*i, queue);
+    
+    for(int i=0; i<10; i++)
+      printf("value %d has been removed.\n", remove(queue));
+    
+    s_free(queue);
+    return 0;
+  }
+  /* NOTE: 
+          I don't tested any code still, I'll do it later, then I will comment the lines for code explanation later. */
 ```
