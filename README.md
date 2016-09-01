@@ -203,8 +203,8 @@ int main(int argc, char **argv) {
     struct node *n_node;
   } NODE;
   
-  void add(int value, NODE *q);
-  void remove(NODE *q);
+  _Bool add(int value, NODE *q);
+  int remove(NODE *q);
 
 
   _Bool add(int value, NODE *q) {
