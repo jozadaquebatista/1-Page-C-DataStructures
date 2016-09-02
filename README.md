@@ -16,12 +16,37 @@ Early I'll publish some code on the following subject:
 - Graphs<br />
 
 ###NOTE: I'm testing one page tutorial and other git features ;D
+
+
+####@A little Matrix example
+```c
+  
+  #include <time.h>
+  
+  /* note: int example[10] <- THIS IS AN "ARRAY", NOT A MATRICE */
+  
+  int int_mat[10][10];
+  
+  int main(int argc, char **argv) {
+  
+  srand(time(NULL));
+  
+  /* filling the matrix */
+  for(int i=0; i<=10; i++)
+    for(int i=j; j<=10; j++)
+      int_mat[i][j] = rand()%(j*i)%7;
+      
+  return 0;
+  }
+
+```
+
 ####@Simple NODE
 ```c
 /*
-* What do you think is a Node in DS ?
-* the bellow example, gives you an sample Node DS.
-*/
+ * What do you think is a Node in DS ?
+ * the bellow example, gives you an sample Node DS.
+ */
 
 /* DS SAMPLE */
 
@@ -268,4 +293,44 @@ int main(int argc, char **argv) {
   }
   /* NOTE: 
           I don't tested any code still, I'll do it later, then I will comment the lines for code explanation later. */
+```
+
+####@Dynamic static array
+
+```c
+  #include <stdio.h>
+  #include <stdlib.h>
+  #include <stdint.h>
+  #include <string.h>
+  #include <time.h>
+  
+  #define ALLOC_SIZE 1
+  
+  typedef struct friends {
+    const char *name;
+    const char *celphone;
+    const char *address;
+    uint8_t age;
+  }FRIEND_LIST[100];
+  
+  int main() {
+    FRIEND_LIST flist = calloc(1,sizeof(FRIEND)); /*  Allocates an Instance of 100 pos struc array,
+                                                   *  but I could make some more changing the ALLOC_SIZE
+                                                   *  to 10 for example.
+                                                   */
+    strcpy(*(flist)->name,u8"myfriend1",ALLOC_SIZE*10);
+    strcpy(*(flist)->celphone,u8"123456",ALLOC_SIZE*10);
+    strcpy(*(flist)->address,u8"foo 123",ALLOC_SIZE*10);
+    *(flist)->age = 26;
+    
+    strcpy(*(flist+1)->name,u8"myfriend2",ALLOC_SIZE*10);
+    strcpy(*(flist+1)->celphone,u8"123456",ALLOC_SIZE*10);
+    strcpy(*(flist+1)->address,u8"foo 123",ALLOC_SIZE*10);
+    *(flist+1)->age = 26;
+    
+    /* Then I could free the entire structure. */
+    free(flist); // bye ...
+    
+    return 0;
+  }
 ```
