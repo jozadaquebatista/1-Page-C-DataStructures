@@ -334,3 +334,18 @@ int main(int argc, char **argv) {
     return 0;
   }
 ```
+```c
+  #include <stdio.h>
+  #include <stdlib.h>
+  #include <stdint.h>
+  
+  int fib(int i) {
+    if(i<=0) return 0;
+    return i+fib(i-1);
+  }
+  
+  int main(int argc, char **argv) {
+    printf("fibonacci of 7 is %d.\n",fib(7));
+    return 0;
+  }
+```
