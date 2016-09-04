@@ -341,13 +341,13 @@ int main(int argc, char **argv) {
   #include <stdlib.h>
   #include <stdint.h>
   
-  int fib(int i) {
+  uint32_t fatorial(int i) {
     if(i<=0) return 0;
-    return i+fib(i-1);
+    return i*fatorial(i-1);
   }
   
   int main(int argc, char **argv) {
-    printf("fibonacci of 7 is %d.\n",fib(7));
+    printf("fibonacci of 7 is %d.\n",fatorial(7));
     return 0;
   }
 ```
