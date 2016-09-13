@@ -36,7 +36,7 @@ NODE *new_node(const char *v) {
         tmp->n_node = NULL;
         
   return (NODE*)tmp;
-}
+}  
 
 int main(int argc, char **argv){
    NODE *Stack = new_node("first el");
@@ -48,4 +48,4 @@ int main(int argc, char **argv){
   pop(Stack);
   
   return 0;
-}
+}m
